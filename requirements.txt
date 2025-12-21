@@ -1,0 +1,13 @@
+# Python dependencies for ASO Off-Target Screening Pipeline
+# Python 3.7+ required
+
+# No external dependencies required for core functionality
+# (Standard library only: csv, sys, os, etc.)
+
+# Optional: for better performance or future enhancements
+# numpy>=1.20.0  # Uncomment if needed for array operations
+# pandas>=1.3.0  # Uncomment if needed for data manipulation
+
+# Gemini annotation (optional - only needed for annotate_with_gemini.py)
+google-genai>=0.2.0  # For Gemini API integration
+

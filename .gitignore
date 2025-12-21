@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Large reference data files (too large for GitHub)
+# Users should download these separately
+data/grch38_refseq_transcripts.fa
+data/grch38_refseq_transcripts_fasta.zip
+data/ncbi_dataset/
+
+# Generated output files
+results.csv
+annotated_results.csv
+test_results_small.csv
+test_annotated_small.csv
+*.csv.bak
+
+# Utility/testing scripts (may contain API keys or local config)
+gemini_probe.py
+
+# Environment variables (if using .env files)
+.env
+.env.local
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+

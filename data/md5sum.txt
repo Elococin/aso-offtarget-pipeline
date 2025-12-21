@@ -1,0 +1,4 @@
+a605228097837ef3a6ce91290a61755a  ncbi_dataset/data/data_summary.tsv
+b8b52562d7e36dcb5bff4f7f7661c52b  ncbi_dataset/data/assembly_data_report.jsonl
+81dd8f24092a9bbacc0f0b03f92c9df7  ncbi_dataset/data/GCF_000001405.40/rna.fna
+1c5bd1d7ca6f6be8685c3e7a070b0d11  ncbi_dataset/data/dataset_catalog.json

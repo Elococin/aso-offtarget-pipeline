@@ -1,0 +1,7 @@
+# ASO Sequences File
+# Format: ASO_ID SEQUENCE (space-separated, one per line)
+# Sequences are ~20 bp ASOs
+
+# Reduced to 1 ASO for development/testing
+ASO_001 ATCGATCGATCGATCGATCG
+
