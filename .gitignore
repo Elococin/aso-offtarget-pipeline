@@ -24,6 +24,8 @@ ENV/
 data/grch38_refseq_transcripts.fa
 data/grch38_refseq_transcripts_fasta.zip
 data/ncbi_dataset/
+data/chr12.fa
+data/chr12.fa.gz
 
 # Generated output files
 results.csv
@@ -31,9 +33,28 @@ annotated_results.csv
 test_results_small.csv
 test_annotated_small.csv
 *.csv.bak
+canonical_syt1_aso_table.csv
+mutation_check.csv
+het_phased_snps.csv
+het_unphased_snps.csv
+het_same_haplotype_snps.csv
+syt1_category2_final.csv
+mutation_sequences.csv
+mutation_offtarget_hits.csv
 
 # Utility/testing scripts (may contain API keys or local config)
 gemini_probe.py
+test_extraction.py
+
+# Patient-specific input files (may contain sensitive data)
+Syt1_ASOs.xlsx
+Syt1_ASOs_(1).xlsx
+syt1.csv
+aso_inventory_status.txt
+
+# Old/obsolete script versions
+scripts/build_aso_inventory.py
+scripts/build_aso_inventory_simple.py
 
 # Environment variables (if using .env files)
 .env
@@ -45,4 +66,10 @@ gemini_probe.py
 # Temporary files
 *.tmp
 *.temp
+
+# VCF and compressed VCFs (large / patient-specific)
+*.vcf
+*.vcf.gz
+*.vcf.bgz
+*.tbi
 
