@@ -413,10 +413,8 @@ This is a research prototype. For questions or issues, please open an issue in t
 
 ## License
 
-[Specify your license here]
+MIT License - see LICENSE file for details.
 
-## Citation
 
-If you use this pipeline in your research, please cite:
-
-[Add citation information here]
+## AuthorGitHub: 
+Nicole Ye @Elococin
