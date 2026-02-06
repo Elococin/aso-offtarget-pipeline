@@ -72,7 +72,8 @@ def scan_transcript(aso_id: str, aso_sequence: str, transcript_header: str,
         
         # Compute substitution-only distance (mismatch count)
         # Window is guaranteed to be same length as ASO (aso_len)
-        dist = edit_distance(aso_sequence, window)
+        # Pass threshold for early termination optimization
+        dist = edit_distance(aso_sequence, window, threshold=max_edit_distance)
         
         # Check if it's a valid hit (dist >= 0 ensures equal-length sequences)
         if is_valid_hit(dist, max_edit_distance):

@@ -7,21 +7,23 @@ are ignored because they strongly disrupt ASO hybridization.
 """
 
 
-def edit_distance(seq1: str, seq2: str) -> int:
+def edit_distance(seq1: str, seq2: str, threshold: int = None) -> int:
     """
     Compute substitution-only distance (Hamming distance) between two sequences.
-    
+
     This function counts only mismatches (substitutions) between equal-length sequences.
     Insertions and deletions are not considered, as they strongly disrupt ASO hybridization.
-    
+
     Args:
         seq1: First sequence (typically the ASO)
         seq2: Second sequence (typically a transcript window, must be same length as seq1)
-    
+        threshold: Optional early termination threshold. If provided, stops counting
+                   once mismatches exceed this value (returns early for efficiency).
+
     Returns:
         Integer mismatch count (0 = identical, higher = more mismatches)
         Returns -1 if sequences have different lengths (invalid for substitution-only distance)
-    
+
     Example:
         >>> edit_distance("ATCG", "ATCG")
         0
@@ -33,17 +35,20 @@ def edit_distance(seq1: str, seq2: str) -> int:
     # Convert to uppercase for consistency
     seq1 = seq1.upper()
     seq2 = seq2.upper()
-    
+
     # Substitution-only distance requires equal-length sequences
     if len(seq1) != len(seq2):
         return -1  # Invalid - sequences must be equal length
-    
+
     # Count mismatches (substitutions only)
     mismatches = 0
     for i in range(len(seq1)):
         if seq1[i] != seq2[i]:
             mismatches += 1
-    
+            # Early termination: stop if we've exceeded the threshold
+            if threshold is not None and mismatches > threshold:
+                return mismatches
+
     return mismatches
 
 
