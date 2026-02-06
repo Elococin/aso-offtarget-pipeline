@@ -55,25 +55,29 @@ def scan_transcript(aso_id: str, aso_sequence: str, transcript_header: str,
     if not is_functional_region(transcript_type):
         return hits
     
-    aso_len = len(aso_sequence)
-    transcript_len = len(transcript_sequence)
-    
+    # Pre-uppercase sequences once (avoid repeated .upper() calls in hot loop)
+    aso_upper = aso_sequence.upper()
+    transcript_upper = transcript_sequence.upper()
+
+    aso_len = len(aso_upper)
+    transcript_len = len(transcript_upper)
+
     # Safety check: skip transcripts shorter than ASO length
     # Substitution-only distance requires equal-length sequences
     if transcript_len < aso_len:
         return hits
-    
+
     # Slide window across transcript
     # For each position, extract a window of exactly ASO length and compute
     # substitution-only distance (mismatch count). Only equal-length windows
     # are compared - indels are ignored as they disrupt ASO hybridization.
     for pos in range(transcript_len - aso_len + 1):
-        window = transcript_sequence[pos:pos + aso_len]
-        
+        window = transcript_upper[pos:pos + aso_len]
+
         # Compute substitution-only distance (mismatch count)
         # Window is guaranteed to be same length as ASO (aso_len)
         # Pass threshold for early termination optimization
-        dist = edit_distance(aso_sequence, window, threshold=max_edit_distance)
+        dist = edit_distance(aso_upper, window, threshold=max_edit_distance)
         
         # Check if it's a valid hit (dist >= 0 ensures equal-length sequences)
         if is_valid_hit(dist, max_edit_distance):

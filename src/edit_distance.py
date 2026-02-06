@@ -15,14 +15,18 @@ def edit_distance(seq1: str, seq2: str, threshold: int = None) -> int:
     Insertions and deletions are not considered, as they strongly disrupt ASO hybridization.
 
     Args:
-        seq1: First sequence (typically the ASO)
-        seq2: Second sequence (typically a transcript window, must be same length as seq1)
+        seq1: First sequence (typically the ASO, should be pre-uppercased)
+        seq2: Second sequence (typically a transcript window, should be pre-uppercased)
         threshold: Optional early termination threshold. If provided, stops counting
                    once mismatches exceed this value (returns early for efficiency).
 
     Returns:
         Integer mismatch count (0 = identical, higher = more mismatches)
         Returns -1 if sequences have different lengths (invalid for substitution-only distance)
+
+    Note:
+        For performance, caller should pre-uppercase sequences before calling this
+        function in a loop. This avoids redundant .upper() calls.
 
     Example:
         >>> edit_distance("ATCG", "ATCG")
@@ -32,18 +36,14 @@ def edit_distance(seq1: str, seq2: str, threshold: int = None) -> int:
         >>> edit_distance("ATCG", "ATC")
         -1  # Different lengths - not valid for substitution-only distance
     """
-    # Convert to uppercase for consistency
-    seq1 = seq1.upper()
-    seq2 = seq2.upper()
-
     # Substitution-only distance requires equal-length sequences
     if len(seq1) != len(seq2):
         return -1  # Invalid - sequences must be equal length
 
-    # Count mismatches (substitutions only)
+    # Count mismatches using zip (faster than indexing)
     mismatches = 0
-    for i in range(len(seq1)):
-        if seq1[i] != seq2[i]:
+    for c1, c2 in zip(seq1, seq2):
+        if c1 != c2:
             mismatches += 1
             # Early termination: stop if we've exceeded the threshold
             if threshold is not None and mismatches > threshold:
