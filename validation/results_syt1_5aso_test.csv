@@ -1,0 +1,3 @@
+aso_id,aso_sequence,transcript_id,gene_symbol,transcript_type,match_start,match_end,matched_sequence,edit_distance
+mjgnqf02q4y7hu,TGTAGAATTGTTTGATTCTT,NM_018509.4,LRRC59,mRNA,2181,2201,TTTAGAATTGTTTGATTCTA,2
+mjgnqf02q4y7hu,TGTAGAATTGTTTGATTCTT,XR_007058144.1,LOC124900718,RNA,4108,4128,TGTAGAATTGTTTGATTGTT,1

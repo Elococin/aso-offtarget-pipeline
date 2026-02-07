@@ -1,3 +1,6 @@
+# Archive directory (patient/sensitive data)
+archive/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -28,19 +31,21 @@ data/chr12.fa
 data/chr12.fa.gz
 
 # Generated output files
-results.csv
-annotated_results.csv
+results*.csv
+annotated_results*.csv
 test_results_small.csv
 test_annotated_small.csv
 *.csv.bak
-canonical_syt1_aso_table.csv
-mutation_check.csv
-het_phased_snps.csv
-het_unphased_snps.csv
-het_same_haplotype_snps.csv
+mutation_*.csv
+het_*snps.csv
 syt1_category2_final.csv
-mutation_sequences.csv
-mutation_offtarget_hits.csv
+
+# Keep reviewer-facing validation artifacts
+!validation/results_syt1_5aso_test.csv
+!validation/results_patient_validation.csv
+!validation/results_syt1_smoke_test.csv
+!validation/VALIDATION_SUMMARY.md
+!validation/ASO_OffTarget_Pipeline_Validation_Report.md
 
 # Utility/testing scripts (may contain API keys or local config)
 gemini_probe.py
@@ -49,8 +54,11 @@ test_extraction.py
 # Patient-specific input files (may contain sensitive data)
 Syt1_ASOs.xlsx
 Syt1_ASOs_(1).xlsx
-syt1.csv
 aso_inventory_status.txt
+
+# Patient-specific derived FASTA inputs/outputs (may contain sensitive data)
+data/proband*.fasta
+data/proband*.fasta.gz
 
 # Old/obsolete script versions
 scripts/build_aso_inventory.py
@@ -73,3 +81,4 @@ scripts/build_aso_inventory_simple.py
 *.vcf.bgz
 *.tbi
 
+validation/ASO_OffTarget_Pipeline_Validation_Report.md

@@ -1,3 +1,21 @@
+# Data Directory
+
+## Included (for testing / review)
+
+- `aso_sequences.txt` — default ASO input list used by `main.py`
+- `mock_transcripts.fa` — small transcript FASTA fixture so the pipeline runs without downloads
+- `md5sum.txt` — checksums for included fixtures
+
+## External (download separately)
+
+- `grch38_refseq_transcripts.fa` — full RefSeq transcriptome FASTA (large)
+- `chr12.fa` — chromosome reference FASTA used by allele-specific scripts (large)
+- Patient-specific FASTA/VCF inputs — do not add if they may contain sensitive data
+
+The repo ignores large reference files by default (see `.gitignore`).
+
+---
+
 # NCBI Datasets
 
 https://www.ncbi.nlm.nih.gov/datasets
